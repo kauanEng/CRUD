@@ -1,0 +1,35 @@
+h1{
+    color: black;
+}
+
+body{
+    background-color: red;
+    background-image: url(/imagens/arvore.jpg);
+    background-repeat: no-repeat;
+    background-size:100%;
+    bottom: 0;
+    color: black;
+    left: 0;
+    overflow: auto;
+    
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    background-size: cover;
+}
+
+.nav-item {
+    padding-top: -10px;
+    color: lightseagreen;
+
+
+}
+
+
+
+
+
+
+
+

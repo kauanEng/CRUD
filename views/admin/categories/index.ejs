@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Categories</title>
+</head>
+<body>
+    <nav class="navbar navbar-dark bg-primary">
+        <a class="navbar-brand" href="/">
+            GuiaPress
+        </a>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/categories">Categorias</a>
+                <a class="nav-link" href="/admin/users/create">Login</a>
+               
+                
+            </li>
+        </ul>
+ </nav>
+    <div class="container">
+        <hr>
+        <h2>Categorias</h2>
+        <a class="btn btn-success" href="/admin/categories/new">Criar nova categoria</a>
+        <hr>
+        <table class="table table-bordered">
+            <thead>
+                <tr> <!---LINHA-->
+                    <th>ID</th><!---COLUNA DA TABELA--> 
+                    <th>Titulo</th>
+                    <th>Slug</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody> 
+                <% categories.forEach(category => { %>
+                <tr>
+                    <th><%= category.id %></th>
+                    <th><%= category.title%></th>
+                    <th><%= category.slug%></th>
+                    <th>
+                        <a href="/admin/categories/edit/<%= category.id %>" class="btn btn-warning">Editar</a>
+
+                        <form method="POST" action="/categories/delete" style="display:inline;" onsubmit="confirmarDelecao(event, this)">
+                            <input type="hidden" name="id" value="<%= category.id %>">
+                            <button class="btn btn-danger">Deletar</button>
+                       </form>
+
+                    </th>
+                </tr>
+               
+
+                <% }) %>
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+<script>
+    function confirmarDelecao(event, form){
+        event.preventDefault();
+        let decision = confirm("Você tem certeza que deseja deletar esta categoria?");
+        if (decision) {
+            form.submit();
+        }
+    }
+</script>
+
+
+    
+</body>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+</html>
